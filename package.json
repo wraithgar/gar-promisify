@@ -1,6 +1,6 @@
 {
   "name": "@gar/promisify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Promisify an entire class or object",
   "main": "index.js",
   "repository": {
