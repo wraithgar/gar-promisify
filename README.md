@@ -27,7 +27,6 @@ class Foo {
 const foo = new Foo('baz')
 const promisified = promisify(foo)
 
-console.log(promisified.attr) // 'baz'
-const bar = await promisified.bar
-console.log(await promisified.double(1024)) // 2048
+console.log(promisified.attr)
+console.log(await promisified.double(1024))
 ```
