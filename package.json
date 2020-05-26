@@ -1,0 +1,32 @@
+{
+  "name": "@gar/promisify",
+  "version": "1.0.0",
+  "description": "Promisify an entire class or object",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "lab -a @hapi/code -L -t 100"
+  },
+  "keywords": [
+    "promisify",
+    "all",
+    "class",
+    "object"
+  ],
+  "author": "Gar <gar+npm@danger.computer>",
+  "license": "MIT",
+  "devDependencies": {
+    "@hapi/code": "^8.0.1",
+    "@hapi/lab": "^22.0.4",
+    "eslint": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+  "dependencies": {
+    "standard": "^14.3.4"
+  }
+}
