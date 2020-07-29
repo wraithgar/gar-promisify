@@ -22,7 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "@hapi/code": "^8.0.1",
-    "@hapi/lab": "^22.0.4",
+    "@hapi/lab": "^23.0.0",
     "eslint": "^7.1.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
