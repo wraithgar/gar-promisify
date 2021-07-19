@@ -7,7 +7,7 @@ object or class instance.
 
 It assumes the callback that the function is expecting is the last
 parameter, and that it is an error-first callback with only one value,
-i.e. `(err, value) => ...`. This mirrors node's util.proimisify method.
+i.e. `(err, value) => ...`. This mirrors node's util.promisify method.
 
 ### Examples
 
