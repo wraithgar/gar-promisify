@@ -7,9 +7,16 @@ object or class instance.
 
 It assumes the callback that the function is expecting is the last
 parameter, and that it is an error-first callback with only one value,
-i.e. `(err, value) => ...`. This mirrors node's util.promisify method.
+i.e. `(err, value) => ...`. This mirrors node's `util.promisify` method.
+
+In order that you can use it as a one-stop-shop for all your promisify
+needs, you can also pass it a function.  That function will be
+promisified as normal using node's built-in `util.promisify` method.
 
 ### Examples
+
+
+Promisify an entire object
 
 ```javascript
 
@@ -29,4 +36,26 @@ const promisified = promisify(foo)
 
 console.log(promisified.attr)
 console.log(await promisified.double(1024))
+```
+
+Promisify a function
+
+```javascript
+
+const promisify = require('@gar/promisify')
+
+function foo (a, cb) {
+  if (a !== 'bad') {
+    return cb(null, 'ok')
+  }
+  return cb('not ok')
+}
+
+const promisified = promisify(foo)
+
+// This will resolve to 'ok'
+promisified('good')
+
+// this will reject
+promisified('bad')
 ```

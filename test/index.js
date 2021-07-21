@@ -19,7 +19,15 @@ class Fixture {
     cb(new Error(input))
   }
 }
-describe('main module', () => {
+
+it('requires a function or object', () => {
+  const throws = () => {
+    promisify('string')
+  }
+  expect(throws).to.throw(TypeError)
+})
+
+describe('promisify object', () => {
   it('non function attribute', () => {
     const instance = new Fixture('test')
     const promisified = promisify(instance)
@@ -40,5 +48,21 @@ describe('main module', () => {
       return promisified.error('test error')
     }
     expect(rejects()).to.reject(Error, 'test error')
+  })
+})
+
+describe('promisify function', () => {
+  it('promisifies a function', async () => {
+    const fn = (a, cb) => cb(null, a)
+    const promisified = promisify(fn)
+    const result = await promisified('test')
+    expect(result).to.equal('test')
+  })
+
+  it('assumes error first callback', async () => {
+    const fn = (a, cb) => cb(new Error('test error'), a)
+    const promisified = promisify(fn)
+    const result = promisified('test')
+    expect(result).to.reject('test error')
   })
 })
