@@ -9,12 +9,12 @@ const handler = {
     }
     if (target[prop][promisify.custom]) {
       return function () {
-        return Reflect.get(target, prop, receiver)[promisify.custom].apply(receiver, arguments)
+        return Reflect.get(target, prop, receiver)[promisify.custom].apply(target, arguments)
       }
     }
     return function () {
       return new Promise((resolve, reject) => {
-        Reflect.get(target, prop, receiver).apply(receiver, [...arguments, function (err, result) {
+        Reflect.get(target, prop, receiver).apply(target, [...arguments, function (err, result) {
           if (err) {
             return reject(err)
           }
