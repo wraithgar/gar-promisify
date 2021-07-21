@@ -13,8 +13,12 @@ In order that you can use it as a one-stop-shop for all your promisify
 needs, you can also pass it a function.  That function will be
 promisified as normal using node's built-in `util.promisify` method.
 
-### Examples
+[node's custom promisified
+functions](https://nodejs.org/api/util.html#util_custom_promisified_functions)
+will also be mirrored, further allowing this to be a drop-in replacement
+for the built-in `util.promisify`.
 
+### Examples
 
 Promisify an entire object
 

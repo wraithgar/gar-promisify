@@ -3,16 +3,24 @@
 const lab = (exports.lab = require('@hapi/lab').script())
 const { describe, it } = lab
 const { expect } = require('@hapi/code')
+const util = require('util')
 
 const promisify = require('../')
 
 class Fixture {
   constructor (attr) {
     this.attr = attr
+    this.custom[util.promisify.custom] = (input1, input2) => {
+      return Promise.resolve([input1, input2])
+    }
   }
 
   single (input, cb) {
     cb(null, input)
+  }
+
+  custom (input1, input2, cb) {
+    cb(null, input1, input2)
   }
 
   error (input, cb) {
@@ -32,6 +40,13 @@ describe('promisify object', () => {
     const instance = new Fixture('test')
     const promisified = promisify(instance)
     expect(promisified.attr).to.equal('test')
+  })
+
+  it('custom promisify', async () => {
+    const instance = new Fixture('test')
+    const promisified = promisify(instance)
+    const custom = await promisified.custom('test one', 'test two')
+    expect(custom).to.equal(['test one', 'test two'])
   })
 
   it('callback success', async () => {

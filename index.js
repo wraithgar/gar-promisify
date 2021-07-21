@@ -1,9 +1,14 @@
 'use strict'
 
+const { promisify } = require('util')
+
 const handler = {
   get: function (target, prop, receiver) {
     if (typeof target[prop] !== 'function') {
       return target[prop]
+    }
+    if (target[prop][promisify.custom]) {
+      return target[prop][promisify.custom]
     }
     return function () {
       return new Promise((resolve, reject) => {
@@ -20,7 +25,7 @@ const handler = {
 
 module.exports = function (thingToPromisify) {
   if (typeof thingToPromisify === 'function') {
-    return require('util').promisify(thingToPromisify)
+    return promisify(thingToPromisify)
   }
   if (typeof thingToPromisify === 'object') {
     return new Proxy(thingToPromisify, handler)
