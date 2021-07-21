@@ -19,5 +19,11 @@ const handler = {
 }
 
 module.exports = function (thingToPromisify) {
-  return new Proxy(thingToPromisify, handler)
+  if (typeof thingToPromisify === 'function') {
+    return require('util').promisify(thingToPromisify)
+  }
+  if (typeof thingToPromisify === 'object') {
+    return new Proxy(thingToPromisify, handler)
+  }
+  throw new TypeError('Can only promisify functions or objects')
 }
