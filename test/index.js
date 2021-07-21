@@ -10,17 +10,17 @@ const promisify = require('../')
 class Fixture {
   constructor (attr) {
     this.attr = attr
-    this.custom[util.promisify.custom] = (input1, input2) => {
-      return Promise.resolve([input1, input2])
+    this.custom[util.promisify.custom] = function (input1, input2) {
+      return Promise.resolve([this.attr, input1, input2])
     }
   }
 
   single (input, cb) {
-    cb(null, input)
+    cb(null, [this.attr, input])
   }
 
   custom (input1, input2, cb) {
-    cb(null, input1, input2)
+    cb(null, this.attr, input1, input2)
   }
 
   error (input, cb) {
@@ -46,14 +46,14 @@ describe('promisify object', () => {
     const instance = new Fixture('test')
     const promisified = promisify(instance)
     const custom = await promisified.custom('test one', 'test two')
-    expect(custom).to.equal(['test one', 'test two'])
+    expect(custom).to.equal(['test', 'test one', 'test two'])
   })
 
   it('callback success', async () => {
     const instance = new Fixture('test')
     const promisified = promisify(instance)
     const single = await promisified.single('test single')
-    expect(single).to.equal('test single')
+    expect(single).to.equal(['test', 'test single'])
   })
 
   it('callback success', async () => {
