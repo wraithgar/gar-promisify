@@ -4,5 +4,11 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-    time: '13:00'
-  open-pull-requests-limit: 10
+  allow:
+    - dependency-type: direct
+  versioning-strategy: increase-if-necessary
+  commit-message:
+    prefix: deps
+    prefix-development: chore
+  labels:
+    - "dependencies"
