@@ -27,6 +27,6 @@
   "devDependencies": {
     "@hapi/code": "^8.0.1",
     "@hapi/lab": "^24.1.0",
-    "standard": "^16.0.3"
+    "standard": "^17.0.0"
   }
 }
