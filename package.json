@@ -25,7 +25,7 @@
   "author": "Gar <gar+npm@danger.computer>",
   "license": "MIT",
   "devDependencies": {
-    "@hapi/code": "^8.0.1",
+    "@hapi/code": "^9.0.0",
     "@hapi/lab": "^24.1.0",
     "standard": "^17.0.0"
   }
