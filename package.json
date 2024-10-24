@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "test": "lab -a @hapi/code -t 100",
+    "test": "node test",
     "posttest": "npm run lint"
   },
   "files": [
@@ -25,8 +25,6 @@
   "author": "Gar <gar+npm@danger.computer>",
   "license": "MIT",
   "devDependencies": {
-    "@hapi/code": "^9.0.1",
-    "@hapi/lab": "^25.0.1",
     "standard": "^17.0.0"
   }
 }
