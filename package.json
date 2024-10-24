@@ -8,8 +8,8 @@
     "url": "https://github.com/wraithgar/gar-promisify.git"
   },
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "npx standard",
+    "lint:fix": "npx standard --fix",
     "test": "node test",
     "posttest": "npm run lint"
   },
@@ -23,8 +23,5 @@
     "object"
   ],
   "author": "Gar <gar+npm@danger.computer>",
-  "license": "MIT",
-  "devDependencies": {
-    "standard": "^17.0.0"
-  }
+  "license": "MIT"
 }
